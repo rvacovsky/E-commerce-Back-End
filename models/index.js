@@ -28,6 +28,14 @@ Tag.belongsToMany(Product, {
   foreignKey: 'post_id'
 });
 
+Category.hasMany(Product, {
+  foreignKey: 'user_id'
+});
+
+Product.hasMany(Tag, {
+  foreignKey: 'post_id'
+});
+
 module.exports = {
   Product,
   Category,
