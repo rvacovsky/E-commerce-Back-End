@@ -6,10 +6,13 @@ const { Tag, Product, ProductTag } = require('../../models');
 router.get('/', (req, res) => {
   // find all tags
   Tag.findAll({
+    attributes: ['id', 'tag_name'],
+    // be sure to include its associated Product data
     include: [
       {
         model: Product,
-        attributes: ['product_name', 'price', 'stock', 'category_id']
+        attributes: ['id', 'product_name', 'price', 'stock', 'category_id'],
+        through: ProductTag
       }
     ]
   })
@@ -18,7 +21,7 @@ router.get('/', (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
-  // be sure to include its associated Product data
+  
 });
 
 router.get('/:id', (req, res) => {
@@ -27,14 +30,13 @@ router.get('/:id', (req, res) => {
     where: {
       id: req.params.id
     },
-    attributes: [
-      'id',
-      'tag_name'
-    ],
+    attributes: ['id', 'tag_name'],
+    // be sure to include its associated Product data
     include: [
       {
         model: Product,
-        attributes: ['product_name', 'price', 'stock', 'category_id']
+        attributes: ['id', 'product_name', 'price', 'stock', 'category_id'],
+        through: ProductTag
       }
     ]
   })
@@ -49,7 +51,7 @@ router.get('/:id', (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
-  // be sure to include its associated Product data
+  
 });
 
 router.post('/', (req, res) => {
