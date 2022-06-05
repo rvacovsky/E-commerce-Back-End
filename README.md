@@ -15,3 +15,4 @@ When MySQL credentials are added in an environment variable file, the user can c
 Utilizing the Insomnia application, the user can open API GET routes for categories, products, or tags. The data for each of these routes is displayed in a formatted JSON. The user can then test API POST, PUT, and DELETE routes using Insomnia, will successfully be able to create, update, and delete data in the database.
 
 ## Demo Video
+https://drive.google.com/file/d/17-wKOadprY6WIbZ1M2t8HwLdc7PTLROb/view
